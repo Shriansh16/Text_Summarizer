@@ -1,4 +1,5 @@
 import sys
+sys.path.insert(0, 'D:\Text_Summarizer\src')
 from logger import logging
 
 
