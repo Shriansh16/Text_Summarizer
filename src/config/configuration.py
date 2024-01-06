@@ -5,7 +5,7 @@ from logger import *
 from exception import CustomException
 from constants import *
 from utils import *
-from entity import DataIngestionConfig
+from entity import *
 
 
 class ConfigurationManager:
@@ -20,3 +20,16 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         data_ingestion_config=DataIngestionConfig(config.root_dir,config.source_url,config.local_data_file,config.unzip_dir)
         return data_ingestion_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            tokenizer_name = config.tokenizer_name
+        )
+
+        return data_transformation_config
